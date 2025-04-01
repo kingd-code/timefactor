@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Consolas', monospace;
+  overflow: hidden; 
+}
+section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #19172e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  right: 20%;
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  background: linear-gradient(#f9d924, #ff2c24);
+  animation: animate 5s ease-in-out infinite;
+  z-index: 1; 
+}
+section::after {
+  content: "";
+  position: absolute;
+  bottom: 10%;
+  left: 20%;
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+  background: linear-gradient(#01d6ff, #0f24f9);
+  animation: animate 5s ease-in-out infinite;
+  animation-delay: -2s;
+  z-index: 1; 
+}
+.clock {
+  position: relative;
+  width: 700px;
+  height: 250px;
+  background-color: rgba(255, 255, 255, 0.05);
+  z-index: 2; 
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.clock .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.clock .container h2 {
+  font-size: 6em;
+  color: #ffffff;
+  margin: 0 5px;
+}
+.clock .container h2:first-child,
+.clock .container h2:nth-child(3),
+.clock .container h2:nth-child(5) {
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 0 5px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+.clock .container span {
+  color: #ffffff;
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-left: 20px;
+}
+
+@keyframes animate {
+  0%, 100% {
+    transform: translateY(20px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@media (max-width: 720px) {
+  .clock {
+    height: auto;
+    width: 200px;
+    padding: 20px 0;
+  }
+  .clock .container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .clock .container h2 {
+    font-size: 4em;
+  }
+  .clock .container span {
+    margin-left: 0;
+  }
+  .clock .container .dot{
+    display: none;
+  }
+}
